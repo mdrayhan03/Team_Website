@@ -32,11 +32,12 @@ form.addEventListener("submit", (e) => {
 const members = [
   {
     name: "Sujoy Mahmud",
-    expertize: "Research methodology design, Health Informatics, STEM Education Outreach",
+    expertize: "Research methodology design, Public Health Informatics, Campaign Management, STEM Education Outreach",
     acheivement: "ICCCAD Research Grant winner 2025, World Champion Team in the FIRST Global Challenge (Lead Programmer, FIRST Global Challenge (FGC)), Ashoka Youth Fellow",
     img: "assets/media/sujoy.jpeg",
     email: "sujoymahmud02@gmail.com",
     linkedin: "https://www.linkedin.com/in/sujoy-mahmud/",
+    protfolio: "",
   },
   {
     name: "Md Rayhan Hossain",
@@ -45,6 +46,7 @@ const members = [
     img: "assets/media/rayhan.jpeg",
     email: "mostafaizurrahman2021@gmail.com",
     linkedin: "https://www.linkedin.com/in/mdrayhan03/",
+    protfolio: "",
   },
   {
     name: "Rahat Al Mamun",
@@ -53,14 +55,16 @@ const members = [
     img: "assets/media/rahat.jpeg",
     email: "rahatalmamun20@gmail.com",
     linkedin: "https://www.linkedin.com/in/ramamun/",
+    protfolio: "",
   },
   {
     name: "Rahat Hasan Shihab",
     expertize: "Rapid prototyping, Fullstack IoT Developer, Product management",
     acheivement: "MIT Solve Awardee, Gates Foundation Awardee, SAUVC Finalist",
     img: "assets/media/shihab.jpeg",
-    email: "sujoymahmud02@gmail.com",
+    email: "shihab.hasan3322@gmail.com ",
     linkedin: "https://www.linkedin.com/in/rhshihab/",
+    protfolio: "https://rhshihab.com/",
   },
   {
     name: "Sumaiya Islam",
@@ -69,6 +73,7 @@ const members = [
     img: "assets/media/sumaiya.jpeg",
     email: "2211104@iub.edu.bd",
     linkedin: "https://www.linkedin.com/in/sumaiya-islam-765b45271/",
+    protfolio: "",
   },
   {
     name: "Tanfia Khan Disha",
@@ -77,14 +82,16 @@ const members = [
     img: "assets/media/tanfia.jpeg",
     email: "sujoymahmud02@gmail.com",
     linkedin: "https://www.linkedin.com/in/tanfiadisha/",
+    protfolio: "",
   },
   {
     name: "Rakib Hossain",
-    expertize: "N/A",
+    expertize: "Documentation & Reporting, Laboratory Technics(Biochem & Biotech), Critical & Experimental Thinking",
     acheivement: "N/A",
     img: "assets/media/rakib.jpeg",
     email: "rakib17.bd.hasan0@gmail.com",
     linkedin: "https://www.linkedin.com/in/rakib-hossain-ba1a13353/",
+    protfolio: "",
   },  
 ];
 
@@ -100,6 +107,7 @@ members.forEach((member) => {
   card.setAttribute("data-acheivement", member.acheivement);
   card.setAttribute("data-email", member.email);
   card.setAttribute("data-linkedin", member.linkedin);
+  card.setAttribute("data-protfolio", member.protfolio);
 
   card.innerHTML = `
     <img src="${member.img}" alt="${member.name}" />
@@ -121,10 +129,12 @@ const expandExpertize = document.getElementById("expandExpertize");
 const expandAcheivement = document.getElementById("expandAcheivement");
 const expandEmail = document.getElementById("expandEmail");
 const expandLinkedin = document.getElementById("expandLinkedin");
+const expandProtfolio = document.getElementById("expandProtfolio");
 
 // Global variables to hold current email/linkedin
 let currentEmail = "";
 let currentLinkedin = "";
+let currentProtfolio = "";
 
 // When clicking a member card
 memberCards.forEach((card) => {
@@ -132,14 +142,24 @@ memberCards.forEach((card) => {
     expandImg.src = card.querySelector("img").src;
     expandName.textContent = card.dataset.name;
     expandExpertize.textContent = card.dataset.expertize;
-    expandAcheivement.textContent = card.dataset.acheivement;
+    expandAcheivement.textContent = card.dataset.acheivement;  
 
     // store values for current card
     currentEmail = card.dataset.email;
     currentLinkedin = card.dataset.linkedin;
+    currentProtfolio = card.dataset.protfolio;
+
+    console.log(currentProtfolio);
+
+    if (currentProtfolio && currentProtfolio.trim() !== "") {
+      expandProtfolio.textContent = "Protfolio";
+    } else {
+      expandProtfolio.textContent = "";
+    }
 
     expandEmail.href = currentEmail;
     expandLinkedin.href = currentLinkedin;
+    expandProtfolio.href = currentProtfolio;
 
     expandCard.classList.add("active");
   });
