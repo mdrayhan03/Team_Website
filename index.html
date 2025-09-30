@@ -3,22 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Research Project</title>
+    <title>Impact Catalyst</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Custom Css -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <!-- Navbar -->
     <header>
       <nav class="navbar">
-        <div class="logo">ResearchLab</div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
+        <div class="logo">Impact Catalyst</div>
+
+        <!-- Hamburger menu for mobile -->
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#project">Project</a></li>
           <li><a href="#member">Members</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
+
 
     <!-- Landing Page Section -->
     <section id="home" class="landing">
@@ -70,9 +88,14 @@
       <div class="expand-content">
         <span class="close-btn" id="closeCard">&times;</span>
         <img id="expandImg" src="" alt="Member" />
-        <h3 id="expandName"></h3>
-        <h4 id="expandRole"></h4>
-        <p id="expandInfo"></p>
+        <h2 id="expandName"></h2>
+        <h3>Expertize</h3>
+        <p id="expandExpertize"></p>
+        <h3>Notable Accolades</h3>
+        <p id="expandAcheivement"></p>
+        <h3>Contact</h3>
+        <a href="" id="expandEmail"><i class="fa-regular fa-envelope"></i>&nbsp;</a>
+        <a href="" id="expandLinkedin"><i class="fa-brands fa-linkedin"></i></a>
       </div>
     </div>
 
@@ -84,15 +107,15 @@
         <div class="contact-info">
           <p>
             Email:
-            <a href="mailto:yourmail@example.com">yourmail@example.com</a>
+            <a href="mailto:sujoymahmud02@gmail.com">sujoymahmud02@gmail.com</a>
           </p>
-          <p>
+          <!-- <p>
             Facebook:
             <a href="https://facebook.com/yourpage" target="_blank"
               >Our FB Page</a
             >
-          </p>
-          <p>Phone: +880 1234 567890</p>
+          </p> -->
+          <p>Phone: +880 1832 067191</p>
           <p>Address: Dhaka, Bangladesh</p>
         </div>
 
@@ -111,7 +134,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>© 2025 Research Project | All Rights Reserved</p>
+      <p>© 2025 Impact Catalyst | All Rights Reserved</p>
     </footer>
 
     <script src="assets/js/script.js"></script>
