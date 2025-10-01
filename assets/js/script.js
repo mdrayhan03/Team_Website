@@ -8,6 +8,37 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+// nav bar link
+const navLinksa = document.querySelectorAll('.nav-links a');
+
+  navLinksa.forEach(link => {
+    link.addEventListener('click', function () {
+      // Remove 'active' from all links
+      navLinksa.forEach(l => l.classList.remove('active'));
+
+      // Add 'active' to the clicked link
+      this.classList.add('active');
+    });
+  });
+
+// learn more
+const learnMoreBtn = document.querySelector('#learnmore');
+
+function setActiveNav(sectionId) {
+  navLinksa.forEach(link => link.classList.remove('active'));
+  const targetLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+  if (targetLink) {
+    targetLink.classList.add('active');
+    targetLink.click(); // works exactly like clicking Project link
+  }
+}
+
+learnMoreBtn.addEventListener('click', function (e) {
+  e.preventDefault(); // stop default jump
+  setActiveNav('project'); // simulate clicking Project link
+  document.querySelector('#project').scrollIntoView({ behavior: 'smooth' });
+});
+
 // nav bar
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
@@ -68,10 +99,10 @@ const members = [
   },
   {
     name: "Sumaiya Islam",
-    expertize: "Data recording and analysis, ",
-    acheivement: "N/A",
+    expertize: "Data Recording and Analysis",
+    acheivement: "",
     img: "assets/media/sumaiya.jpeg",
-    email: "2211104@iub.edu.bd",
+    email: "shimusumaiya007@gmail.com",
     linkedin: "https://www.linkedin.com/in/sumaiya-islam-765b45271/",
     protfolio: "",
   },
@@ -87,7 +118,7 @@ const members = [
   {
     name: "Rakib Hossain",
     expertize: "Documentation & Reporting, Laboratory Technics(Biochem & Biotech), Critical & Experimental Thinking",
-    acheivement: "N/A",
+    acheivement: "",
     img: "assets/media/rakib.jpeg",
     email: "rakib17.bd.hasan0@gmail.com",
     linkedin: "https://www.linkedin.com/in/rakib-hossain-ba1a13353/",
@@ -130,6 +161,7 @@ const expandAcheivement = document.getElementById("expandAcheivement");
 const expandEmail = document.getElementById("expandEmail");
 const expandLinkedin = document.getElementById("expandLinkedin");
 const expandProtfolio = document.getElementById("expandProtfolio");
+const acheivementh3 = document.getElementById("acheivementh3");
 
 // Global variables to hold current email/linkedin
 let currentEmail = "";
@@ -142,14 +174,18 @@ memberCards.forEach((card) => {
     expandImg.src = card.querySelector("img").src;
     expandName.textContent = card.dataset.name;
     expandExpertize.textContent = card.dataset.expertize;
-    expandAcheivement.textContent = card.dataset.acheivement;  
+
+    if (card.dataset.acheivement && card.dataset.acheivement.trim() !== "") {
+      expandAcheivement.textContent = card.dataset.acheivement;
+    } else {
+      acheivementh3.style.display = "None";
+      expandProtfolio.textContent = "";
+    }      
 
     // store values for current card
     currentEmail = card.dataset.email;
     currentLinkedin = card.dataset.linkedin;
     currentProtfolio = card.dataset.protfolio;
-
-    console.log(currentProtfolio);
 
     if (currentProtfolio && currentProtfolio.trim() !== "") {
       expandProtfolio.textContent = "Protfolio";
@@ -198,7 +234,7 @@ const projects = [
       "assets/media/wash3.jpg",
       "assets/media/wash4.jpg",
     ],
-    memberList: [0, 1, 2, 4],
+    memberList: [3],
   },
   {
     title: "Research Project On Identifying adaptations in healthcare seeking behavior of vulnerable women in climate-affected regions in river islands of Gaibandha",
@@ -211,10 +247,10 @@ const projects = [
       "assets/media/gaibandha3.jpeg",
       "assets/media/gaibandha4.jpeg",
     ],
-    memberList: [0, 1, 2, 4],
+    memberList: [0],
   },
   {
-    title: "Cerebral Palsy",
+    title: "AAC Device for Cerebral Palsy",
     description:
       "Cerebral palsy (CP) is one of the most common motor disabilities in children worldwide, and in Bangladesh, thousands of individuals are affected by its life-long challenges. Among the many difficulties they face, impaired motor control and speech disabilities are particularly significant, as these limit their ability to communicate effectively with caregivers, teachers, and healthcare professionals. Communication is the foundation of human interaction, learning, and care, and the lack of accessible tools can severely reduce the quality of life for individuals with CP. To address this pressing issue, a gesture-based mouse communication device integrated with an Augmentative and Alternative Communication (AAC) interface has been developed. This innovation combines assistive technology, accessibility-focused design, and locally relevant solutions to empower individuals with CP in Bangladesh. The device functions as an air-mouse system, where small, controlled hand or arm gestures are translated into cursor movements on a screen. Unlike conventional computer mice or touchpads, which require fine motor control, this system uses motion sensors such as the MPU6050 to capture movement data. The signals are transmitted wirelessly to a computer or tablet, where they are processed into smooth cursor actions. By minimizing the need for precise physical input, the device significantly lowers the barrier for users with motor impairments to interact with digital interfaces. Complementing the gesture-based mouse is an AAC interface, which provides a structured, visual, and easy-to-use platform for communication. Through the interface, users can select symbols, icons, or text to express their needs, emotions, and responses. For instance, with a few cursor movements, a user can indicate hunger, request assistance, or express discomfort. More advanced features allow the AAC system to generate speech output, enabling direct verbal communication with caregivers and healthcare workers. This integration bridges the gap between motor limitations and speech impairments, offering individuals with CP a more independent voice in their daily interactions. The project holds particular significance in the context of Bangladesh. Many existing AAC solutions and gesture-based technologies are costly, complex, or not designed with local contexts in mind. Families of individuals with CP often cannot afford high-end imported devices, leaving them with very few options. This system, however, emphasizes affordability, simplicity, and adaptability. The hardware is built from cost-effective components, while the software is customizable for Bangla and English communication, ensuring cultural and linguistic relevance. Moreover, the system contributes to the broader goal of inclusive healthcare and education. With the device, caregivers and healthcare professionals can better understand patients needs, improving diagnosis, therapy, and overall care. In schools or learning environments, students with CP can participate more actively, expressing ideas and engaging with teachers and peers. This has the potential to reduce isolation, boost confidence, and foster inclusion in society. In conclusion, the gesture-based mouse communication device and AAC interface is not only an innovation in assistive technology but also a step toward equity and dignity for individuals with cerebral palsy in Bangladesh. By providing them with an accessible means to communicate and interact, the project enhances independence, strengthens relationships with caregivers, and improves overall quality of life. Its locally focused, affordable, and user-friendly design ensures that it can be a practical solution for many families, offering hope and empowerment to a community that has long been underserved.",
     thumbImg: "assets/media/cp1.png",
@@ -281,6 +317,8 @@ projects.forEach((project, index) => {
       imgEl.style.borderRadius = "6px";
       expandImgs.appendChild(imgEl);
     });
+
+    memberProjectContainer.innerHTML = "";
 
     project.memberList.forEach((index) => {
       const member = members[index];
